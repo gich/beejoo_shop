@@ -5,7 +5,7 @@ from django.utils import timezone
 # Create your models here.
 class DesignType(models.Model):
     #камни, глина, бисер...
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, Blank=False, unique=True)
     is_displayed = models.BooleanField(default=True)
 
     def __str__(self):
@@ -14,7 +14,7 @@ class DesignType(models.Model):
 
 class Category(models.Model):
     #браслет, серьги...
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=30, blank=False, unique=True)
     is_displayed = models.BooleanField(default=True)
 
     def __str__(self):
@@ -22,26 +22,26 @@ class Category(models.Model):
 
 
 class Color(models.Model):
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=20, blank=False, unique=True)
     is_displayed = models.BooleanField(default=True)
 
     def __str__(self):
         return ('Color: {}'.format(self.name))
 
 
-class Goods(models.Model):
+class Good(models.Model):
     category = models.ForeignKey('Category')
     design_types = models.ManyToManyField('DesignType')
     colors = models.ManyToManyField('Color')
-    title = models.CharField(max_length=30)
+    title = models.CharField(max_length=50, blank=False)
     short_description = models.CharField(max_length=100)
     full_description =models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    sale = models.DecimalField(max_digits=10, decimal_places=2)
+    sale = models.DecimalField(max_digits=10, decimal_places=2, blank=True)
     full_img_uri = models.URLField()
     preview_img_uri = models.URLField()
     data_created = models.DateTimeField(default=timezone.now())
-    amount = models.IntegerField()
+    amount = models.IntegerField(default=1)
     is_displayed = models.BooleanField(default=True)
 
 
