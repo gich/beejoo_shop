@@ -5,7 +5,7 @@ from django.utils import timezone
 # Create your models here.
 class DesignType(models.Model):
     #камни, глина, бисер...
-    name = models.CharField(max_length=50, Blank=False, unique=True)
+    name = models.CharField(max_length=50, blank=False, unique=True)
     is_displayed = models.BooleanField(default=True)
 
     def __str__(self):
