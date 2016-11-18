@@ -29,17 +29,13 @@ class Color(models.Model):
         return ('Color: {}'.format(self.name))
 
 
-class GoodDescription(models.Model):
+class Goods(models.Model):
+    category = models.ForeignKey('Category')
+    design_types = models.ManyToManyField('DesignType')
+    colors = models.ManyToManyField('Color')
+    title = models.CharField(max_length=30)
     short_description = models.CharField(max_length=100)
     full_description =models.TextField()
-
-
-class Goods(models.Model):
-    category_id = models.ForeignKey('Category')
-    design_type_id = models.ManyToManyField('DesignType')
-    color_id = models.ManyToManyField('Color')
-    title = models.CharField(max_length=30)
-    good_description = models.ForeignKey('GoodDescription')
     price = models.DecimalField(max_digits=10, decimal_places=2)
     sale = models.DecimalField(max_digits=10, decimal_places=2)
     full_img_uri = models.URLField()
