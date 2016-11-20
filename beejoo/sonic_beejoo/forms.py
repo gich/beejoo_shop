@@ -7,9 +7,9 @@ from sonic_beejoo.models import *
 class DesignTypeForm(forms.ModelForm):
     class Meta:
         model = DesignType
-        fields = [ 'full', ]
+        fields = '__all__'
 
 class GoodForm(forms.ModelForm):
     class Meta:
         model = Good
-        fields = [ 'full',]
+        fields = '__all__'

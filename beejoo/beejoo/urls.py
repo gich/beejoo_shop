@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from sonic_beejoo.views import design_type
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^goods/',)
+    url(r'^design/', design_type, name='create')
 ]
