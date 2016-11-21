@@ -9,7 +9,7 @@ class DesignType(models.Model):
     is_displayed = models.BooleanField('Отображать', default=True)
 
     def __str__(self):
-        return ('Design: {}'.format(self.name))
+        return ('Design: {}'.format(self.name.encode('utf8')))
 
 
 class Category(models.Model):
@@ -18,7 +18,7 @@ class Category(models.Model):
     is_displayed = models.BooleanField(default=True)
 
     def __str__(self):
-        return ('Category: {}'.format(self.name))
+        return ('Category: {}'.format(self.name.encode('utf8')))
 
 
 class Color(models.Model):
@@ -26,7 +26,7 @@ class Color(models.Model):
     is_displayed = models.BooleanField(default=True)
 
     def __str__(self):
-        return ('Color: {}'.format(self.name))
+        return ('Color: {}'.format(self.name.encode('utf8')))
 
 
 class Good(models.Model):
@@ -38,8 +38,8 @@ class Good(models.Model):
     full_description =models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     sale = models.DecimalField(max_digits=10, decimal_places=2, blank=True)
-    full_img_uri = models.URLField()
-    preview_img_uri = models.URLField()
+    full_img_uri = models.ImageField(blank=True)
+    preview_img_uri = models.ImageField(blank=True)
     data_created = models.DateTimeField(default=timezone.now())
     amount = models.IntegerField(default=1)
     is_displayed = models.BooleanField(default=True)
