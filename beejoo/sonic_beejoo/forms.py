@@ -24,4 +24,11 @@ class ColorForm(forms.ModelForm):
 class GoodForm(forms.ModelForm):
     class Meta:
         model = Good
-        fields = '__all__'
+        fields = [ 'category',
+                   'design_types',
+                   'colors',
+                   'title',
+                   'short_description',
+                   'price',
+                   'amount',
+        ]

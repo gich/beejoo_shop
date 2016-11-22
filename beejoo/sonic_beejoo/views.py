@@ -52,7 +52,7 @@ def color(request):
     return HttpResponse(status=405)
 
 
-def goods(request):
+def add_goods(request):
     if request.method == 'GET':
         form = GoodForm()
         return render(request, 'sonic_beejoo/goods.html', {'form': form})
@@ -62,5 +62,11 @@ def goods(request):
             form.save()
         return render(request, 'sonic_beejoo/goods.html', {'form': form})
     return HttpResponse(status=405)
+
+def goods(request):
+    if request.method == 'GET':
+        visible_goods = Good.objects.all()
+
+        return render(request, 'sonic_beejoo/product.html', {'goods': visible_goods})
 
 

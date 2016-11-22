@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ALL</title>
+</head>
+<body>
+<h1>Украшения</h1>
+<ul>
+{% for good in goods %}
+    <li>{{ good.title }}</li>
+    <li>{{ good.color }}</li>
+{% endfor %}
+</ul>
+
+</body>
+</html>

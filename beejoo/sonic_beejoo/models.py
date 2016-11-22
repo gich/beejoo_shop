@@ -8,8 +8,11 @@ class DesignType(models.Model):
     name = models.CharField('Тип изделия', max_length=50, blank=False, unique=True)
     is_displayed = models.BooleanField('Отображать', default=True)
 
+    class Meta:
+        verbose_name_plural = 'Состав'
+
     def __str__(self):
-        return ('Design: {}'.format(self.name.encode('utf8')))
+        return self.name
 
 
 class Category(models.Model):
@@ -18,7 +21,7 @@ class Category(models.Model):
     is_displayed = models.BooleanField(default=True)
 
     def __str__(self):
-        return ('Category: {}'.format(self.name.encode('utf8')))
+        return self.name
 
 
 class Color(models.Model):
@@ -26,7 +29,7 @@ class Color(models.Model):
     is_displayed = models.BooleanField(default=True)
 
     def __str__(self):
-        return ('Color: {}'.format(self.name.encode('utf8')))
+        return self.name
 
 
 class Good(models.Model):
@@ -35,9 +38,9 @@ class Good(models.Model):
     colors = models.ManyToManyField('Color')
     title = models.CharField(max_length=50, blank=False)
     short_description = models.CharField(max_length=100)
-    full_description = models.TextField()
+    full_description = models.TextField(blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    sale = models.DecimalField(max_digits=10, decimal_places=2, blank=True)
+    sale = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     full_img_uri = models.ImageField(upload_to='goods_img', blank=True)
     preview_img_uri = models.ImageField(upload_to='goods_img', blank=True)
     data_created = models.DateTimeField(default=timezone.now())
