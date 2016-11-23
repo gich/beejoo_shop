@@ -66,7 +66,7 @@ def add_goods(request):
 def goods(request):
     if request.method == 'GET':
         visible_goods = Good.objects.all()
-
-        return render(request, 'sonic_beejoo/product.html', {'goods': visible_goods})
+        colors = visible_goods.colors.all()
+        return render(request, 'sonic_beejoo/product.html', {'goods': visible_goods, 'colors': colors})
 
 

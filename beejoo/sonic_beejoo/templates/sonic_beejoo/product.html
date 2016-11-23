@@ -9,7 +9,7 @@
 <ul>
 {% for good in goods %}
     <li>{{ good.title }}</li>
-    <li>{{ good.color }}</li>
+    <li>{% for color in colors %}{{ color }}{% endfor %}</li>
 {% endfor %}
 </ul>
 

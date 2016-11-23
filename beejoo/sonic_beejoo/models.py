@@ -35,7 +35,7 @@ class Color(models.Model):
 class Good(models.Model):
     category = models.ForeignKey('Category')
     design_types = models.ManyToManyField('DesignType')
-    colors = models.ManyToManyField('Color')
+    colors = models.ManyToManyField('Color',related_name='all_colors')
     title = models.CharField(max_length=50, blank=False)
     short_description = models.CharField(max_length=100)
     full_description = models.TextField(blank=True)
