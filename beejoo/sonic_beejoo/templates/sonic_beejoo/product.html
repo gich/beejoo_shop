@@ -6,12 +6,12 @@
 </head>
 <body>
 <h1>Украшения</h1>
-<ul>
 {% for good in goods %}
-    <li>{{ good.title }}</li>
-    <li>{% for color in colors %}{{ color }}{% endfor %}</li>
-{% endfor %}
-</ul>
+    Заголово:{{ good.title }}<br>
+    {% for color in good.colors.all %}
+    Цвета: {{ color}}<br>
+    {% endfor %}
 
+{% endfor %}
 </body>
 </html>
