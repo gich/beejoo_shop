@@ -13,9 +13,11 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 from sonic_beejoo.views import design_type, category, color, add_goods, goods
+
+#from sb_auth import urls as auth_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -23,6 +25,6 @@ urlpatterns = [
     url(r'^category/', category, name='create'),
     url(r'^color/', color, name='create'),
     url(r'^add/', add_goods, name='add'),
-    url(r'^goods/', goods)
-
+    url(r'^goods/', goods),
+    url(r'^users/', include('sb_auth.urls', namespace='sb_auth')),
 ]

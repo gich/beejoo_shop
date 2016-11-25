@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     #my apps:
     'sonic_beejoo',
+    'sb_auth',
 ]
 
 MIDDLEWARE = [
@@ -121,3 +122,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Authorization
+# https://docs.djangoproject.com/es/1.10/topics/auth/
+
+AUTH_USER_MODEL = 'sb_auth.CustomUser'
+LOGIN_URL = '/users/login'
+#LOGIN_REDIRECT_URL = '/pizza/create'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]

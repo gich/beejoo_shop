@@ -48,19 +48,10 @@ class Good(models.Model):
     is_displayed = models.BooleanField(default=True)
 
 
-# class Users(models.Model):
-#     name = models.CharField(max_length=30)
-#     email = models.EmailField(default='your@email.here')
-#     phone_number = models.CharField(max_length=15, default='+7123456789')
-#     password = models.CharField(max_length=20)
-#     date_register = models.DateTimeField(default=timezone.now())
-#
-#
-# class Cart(models.Model):
-#     user_id = models.ForeignKey('Users')
-#     good_id = models.ForeignKey('Goods')
-#     price = models.DecimalField(max_digits=10, decimal_places=2)
-#     quantity = models.IntegerField()
-#     done = models.BooleanField(default=False)
+class Order(models.Model):
+    good_id = models.ForeignKey('Good')
+    quantity = models.IntegerField()
+    total_sum = models.IntegerField()
+    is_done = models.BooleanField(default=False)
 
 
