@@ -6,12 +6,20 @@
 </head>
 <body>
 <h1>Украшения</h1>
+<a href="{% url 'add' %}">Добавить новое</a>
+<div class="prod">
 {% for good in goods %}
-    Заголово:{{ good.title }}<br>
+    <h2>{{ good.title }}</h2><br>
+    <h3>Цвета:</h3>
     {% for color in good.colors.all %}
-    Цвета: {{ color}}<br>
+         {{ color}}<br>
     {% endfor %}
-
+    <h3>Состав:</h3>
+    {% for des in good.design_types.all %}
+         {{ des}}<br>
+    {% endfor %}
+    <h3>Цена: {{ good.price }} руб.</h3>
 {% endfor %}
+</div>
 </body>
 </html>
