@@ -128,7 +128,7 @@ STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'sb_auth.CustomUser'
 LOGIN_URL = '/users/login'
-#LOGIN_REDIRECT_URL = '/pizza/create'
+LOGIN_REDIRECT_URL = '/'
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',

@@ -7,9 +7,33 @@
 <body>
 <h1>hello</h1>
 
-<form action="{% url 'create' %}" method="POST">
+<form action="{% url 'create_des' %}" method="POST">
     {% csrf_token %}
     <h2>Design</h2>
+    {{ form }}
+    <input type="submit" value="Submit" />
+</form>
+<ul>
+{% for design in designs %}
+    <li>{{ design.name }}</li>
+{% endfor %}
+</ul>
+
+<form action="{% url 'create_cat' %}" method="POST">
+    {% csrf_token %}
+    <h2>Cat</h2>
+    {{ form }}
+    <input type="submit" value="Submit" />
+</form>
+<ul>
+{% for design in designs %}
+    <li>{{ design.name }}</li>
+{% endfor %}
+</ul>
+
+<form action="{% url 'create_col' %}" method="POST">
+    {% csrf_token %}
+    <h2>Color</h2>
     {{ form }}
     <input type="submit" value="Submit" />
 </form>

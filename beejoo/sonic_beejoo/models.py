@@ -20,6 +20,9 @@ class Category(models.Model):
     name = models.CharField(max_length=30, blank=False, unique=True)
     is_displayed = models.BooleanField(default=True)
 
+    class Meta:
+        verbose_name_plural = 'Категория'
+
     def __str__(self):
         return self.name
 
@@ -27,6 +30,9 @@ class Category(models.Model):
 class Color(models.Model):
     name = models.CharField(max_length=20, blank=False, unique=True)
     is_displayed = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name_plural = 'Цвет'
 
     def __str__(self):
         return self.name
@@ -47,11 +53,17 @@ class Good(models.Model):
     amount = models.IntegerField(default=1)
     is_displayed = models.BooleanField(default=True)
 
+    class Meta:
+        verbose_name_plural = 'Товар'
+
 
 class Order(models.Model):
     good_id = models.ForeignKey('Good')
     quantity = models.IntegerField()
     total_sum = models.IntegerField()
     is_done = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name_plural = 'Заказ'
 
 

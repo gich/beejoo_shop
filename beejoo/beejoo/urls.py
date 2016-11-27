@@ -17,14 +17,14 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from sonic_beejoo.views import design_type, category, color, add_goods, goods
 
-#from sb_auth import urls as auth_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^design/', design_type, name='create'),
-    url(r'^category/', category, name='create'),
-    url(r'^color/', color, name='create'),
-    url(r'^add/', add_goods, name='add'),
-    url(r'^goods/', goods),
+    url(r'^design/', design_type, name='create_des'),
+    url(r'^category/', category, name='create_cat'),
+    url(r'^color/', color, name='create_col'),
+    url(r'^add/', add_goods, name='add_good'),
+    url(r'^$', goods, name='index'),
     url(r'^users/', include('sb_auth.urls', namespace='sb_auth')),
+
 ]
