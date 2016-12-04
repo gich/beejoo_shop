@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    #downloaded apps:
+    'cart',
+
     #my apps:
     'sonic_beejoo',
     'sb_auth',
