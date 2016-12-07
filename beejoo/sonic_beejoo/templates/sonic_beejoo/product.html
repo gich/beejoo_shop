@@ -1,15 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>ALL</title>
-</head>
-<body>
+{% extends "sonic_beejoo/_base.html" %}
+<style>
+    label {
+        display: inline;
+    }
+</style>
+{% block content %}
 <h1>Украшения</h1>
 <a href="{% url 'add_good' %}">Добавить новое</a>
 <div class="prod">
 {% for good in goods %}
+    <div>
+    <form action="product.html">
     <h2>{{ good.title }}</h2><br>
+    <img src="{{ good.img_uri.url }}" width="150" height="150">
     <h3>Цвета:</h3>
     {% for color in good.colors.all %}
          {{ color}}<br>
@@ -19,7 +22,9 @@
          {{ des}}<br>
     {% endfor %}
     <h3>Цена: {{ good.price }} руб.</h3>
+    <input type="submit" value="Добавить в корзину">
+    </form>
+    </div>
 {% endfor %}
 </div>
-</body>
-</html>
+{% endblock %}

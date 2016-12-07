@@ -31,4 +31,5 @@ class GoodForm(forms.ModelForm):
                    'short_description',
                    'price',
                    'amount',
+                   'img_uri'
         ]

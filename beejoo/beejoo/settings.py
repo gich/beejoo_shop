@@ -123,6 +123,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+if DEBUG:
+    STATICFILES_DIRS = (
+        os.path.join(BASE_DIR, 'static'),
+    )
+
+_PATH = os.path.abspath(os.path.dirname(__file__))
+
+MEDIA_ROOT = os.path.join(_PATH, 'media')
+MEDIA_URL = '/media/'
+
 # Authorization
 # https://docs.djangoproject.com/es/1.10/topics/auth/
 

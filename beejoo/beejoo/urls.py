@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 from sonic_beejoo.views import design_type, category, color, add_goods, goods
 
 
@@ -26,5 +28,7 @@ urlpatterns = [
     url(r'^add/', add_goods, name='add_good'),
     url(r'^$', goods, name='index'),
     url(r'^users/', include('sb_auth.urls', namespace='sb_auth')),
-
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
