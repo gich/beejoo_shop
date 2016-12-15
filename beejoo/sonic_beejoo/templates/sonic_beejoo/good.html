@@ -1,0 +1,20 @@
+{% extends "sonic_beejoo/_base.html" %}
+{% block content %}
+    <div class="container">
+            <img class="img-rounded" src="{{ goood.img_uri.url }}" width="300" height="300">
+            <div class="col-md-3">
+                <h2>{{ goood.title }}</h2>
+                {{ goood.full_description }}<br>
+                <p>Цена:{{ goood.price }} руб</p>
+                <h4>Цвета:</h4>
+                {% for color in goood.colors.all %}
+                {{ color}}<br>
+                {% endfor %}
+                <h4>Состав:</h4>
+                {% for des in goood.design_types.all %}
+                {{ des}}<br>
+                {% endfor %}
+                <a href="javascript:history.go(-1)" class="btn btn-default btn-xs">Назад</a>
+            </div>
+    </div>
+{% endblock %}

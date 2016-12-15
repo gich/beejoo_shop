@@ -63,6 +63,7 @@ def add_goods(request):
         return render(request, 'sonic_beejoo/goods.html', {'form': form})
     return HttpResponse(status=405)
 
+
 def goods(request):
     if request.method == 'GET':
         # visible_goods = Good.objects.all().select_related().prefetch_related(
@@ -70,5 +71,10 @@ def goods(request):
         # ).first()
         visible_goods = Good.objects.all()
         return render(request, 'sonic_beejoo/product.html', {'goods': visible_goods})
+    return HttpResponse(status=405)
 
 
+def good(request, product_id):
+    if request.method == 'GET':
+        return render(request, 'sonic_beejoo/good.html', {'goood': Good.objects.get(id=product_id)})
+    return HttpResponse(status=405)

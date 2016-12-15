@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>ADD GOODDS</title>
-</head>
-<body>
+{% extends "sonic_beejoo/_base.html" %}
+{% block content %}
+<div class="container">
 <h1>Add</h1>
 <form action="{% url 'add_good' %}" method="POST">
+    <div class="form-group">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Submit" />
+    </div>
 </form>
-</body>
-</html>
+</div>
+{% endblock %}

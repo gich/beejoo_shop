@@ -1,28 +1,23 @@
 {% extends "sonic_beejoo/_base.html" %}
-<style>
-    label {
-        display: inline;
-    }
-</style>
 {% block content %}
-<h1>Украшения</h1>
+<h1>Sonic Beejoo</h1>
 <a href="{% url 'add_good' %}">Добавить новое</a>
-<div class="prod">
+<div class="container">
 {% for good in goods %}
-    <div>
+    <div class="col-md-2">
     <form action="product.html">
-    <h2>{{ good.title }}</h2><br>
-    <img src="{{ good.img_uri.url }}" width="150" height="150">
-    <h3>Цвета:</h3>
+    <h3><a href="{% url 'good' good.id %}">{{ good.title }}</a></h3><br>
+    <img class="img-circle" src="{{ good.img_uri.url }}" width="150" height="150">
+    <h4>Цвета:</h4>
     {% for color in good.colors.all %}
          {{ color}}<br>
     {% endfor %}
-    <h3>Состав:</h3>
+    <h4>Состав:</h4>
     {% for des in good.design_types.all %}
          {{ des}}<br>
     {% endfor %}
-    <h3>Цена: {{ good.price }} руб.</h3>
-    <input type="submit" value="Добавить в корзину">
+    <h4>Цена: {{ good.price }} руб.</h4>
+    <input type="submit" class="btn btn-default" value="Добавить в корзину">
     </form>
     </div>
 {% endfor %}

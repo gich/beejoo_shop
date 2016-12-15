@@ -51,6 +51,7 @@ class Good(models.Model):
     img_second_uri = models.ImageField(upload_to='goods_img', blank=True)
     data_created = models.DateTimeField(default=timezone.now())
     amount = models.IntegerField(default=1)
+    slug = models.SlugField(max_length=50, blank=False, unique=True)
     is_displayed = models.BooleanField(default=True)
 
     class Meta:
