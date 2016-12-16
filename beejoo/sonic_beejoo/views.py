@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render,redirect
+from django.http import HttpResponse, JsonResponse
 from sonic_beejoo.forms import GoodForm, DesignTypeForm, CategoryForm, ColorForm
 from sonic_beejoo.models import DesignType, Category, Color, Good
 
@@ -66,11 +66,12 @@ def add_goods(request):
 
 def goods(request):
     if request.method == 'GET':
+        in_basket = str(len(request.session['inbasket'])) if 'inbasket' in request.session else 0
         # visible_goods = Good.objects.all().select_related().prefetch_related(
         #     'colors', 'design_types', 'category'
         # ).first()
         visible_goods = Good.objects.all()
-        return render(request, 'sonic_beejoo/product.html', {'goods': visible_goods})
+        return render(request, 'sonic_beejoo/product.html', {'goods': visible_goods, 'inbasket': in_basket})
     return HttpResponse(status=405)
 
 
@@ -78,3 +79,13 @@ def good(request, product_id):
     if request.method == 'GET':
         return render(request, 'sonic_beejoo/good.html', {'goood': Good.objects.get(id=product_id)})
     return HttpResponse(status=405)
+
+
+def add_to_cart(request):
+    if request.method == 'POST':
+        if 'inbasket' not in request.session:
+            request.session['inbasket'] = []
+        request.session['inbasket'] += [request.POST['product']]
+        return JsonResponse({'items_in_basket': str(len(request.session['inbasket']))})
+    else:
+        return redirect('/')
