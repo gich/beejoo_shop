@@ -17,18 +17,19 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-from sonic_beejoo.views import design_type, category, color, add_goods, goods, good, add_to_cart
+from sonic_beejoo.views import design_type, category, color, add_goods, goods, good, add_to_cart, basket
 
 
 urlpatterns = [
+    url(r'^$', goods, name='index'),
     url(r'^admin/', admin.site.urls),
     url(r'^good/(?P<product_id>[0-9]+)/', good, name='good'),
     url(r'^addtocart/', add_to_cart, name='add_to_cart'),
+    url(r'^basket/', basket, name='basket'),
     url(r'^design/', design_type, name='create_des'),
     url(r'^category/', category, name='create_cat'),
     url(r'^color/', color, name='create_col'),
     url(r'^add/', add_goods, name='add_good'),
-    url(r'^$', goods, name='index'),
     url(r'^users/', include('sb_auth.urls', namespace='sb_auth')),
 ]
 

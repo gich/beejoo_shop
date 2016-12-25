@@ -77,7 +77,8 @@ def goods(request):
 
 def good(request, product_id):
     if request.method == 'GET':
-        return render(request, 'sonic_beejoo/good.html', {'goood': Good.objects.get(id=product_id)})
+        in_basket = str(len(request.session['inbasket'])) if 'inbasket' in request.session else 0
+        return render(request, 'sonic_beejoo/good.html', {'goood': Good.objects.get(id=product_id), 'inbasket': in_basket})
     return HttpResponse(status=405)
 
 
@@ -89,3 +90,7 @@ def add_to_cart(request):
         return JsonResponse({'items_in_basket': str(len(request.session['inbasket']))})
     else:
         return redirect('/')
+
+
+def basket(request):
+    pass
